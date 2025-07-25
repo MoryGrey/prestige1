@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Такси Престиж</title>
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700;400&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <!-- Firebase -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+</head>
+<body>
+  <div class="onboarding-container">
+    <header>
+      <h1 class="brand-title">ТАКСИ ПРЕСТИЖ</h1>
+    </header>
+    <main>
+      <div class="slides">
+        <div class="slide active">
+          <h2>Быстро и удобно</h2>
+          <p>Закажите такси в пару кликов — без звонков и ожидания оператора.</p>
+        </div>
+        <div class="slide">
+          <h2>Премиальный сервис</h2>
+          <p>Вежливые водители, чистые автомобили, индивидуальный подход к каждому клиенту.</p>
+        </div>
+        <div class="slide">
+          <h2>Выгодные тарифы</h2>
+          <p>Честные цены, прозрачные условия, никаких скрытых платежей.</p>
+        </div>
+      </div>
+      <div class="slide-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+      <div class="logo-block">
+        <img src="logo.png" alt="Логотип Престиж" class="logo">
+        <button class="next-btn">Далее</button>
+      </div>
+      <div class="auth-form-block" style="display:none;">
+        <form class="auth-form" id="register-form">
+          <h2>Регистрация</h2>
+          <input type="text" id="reg-name" placeholder="Имя" required autocomplete="name">
+          <input type="tel" id="reg-phone" placeholder="Телефон" required autocomplete="tel">
+          <input type="password" id="reg-password" placeholder="Пароль" required autocomplete="new-password">
+          <button type="submit" class="auth-btn">Зарегистрироваться</button>
+          <div class="auth-switch">Уже есть аккаунт? <span id="to-login">Войти</span></div>
+        </form>
+        <form class="auth-form" id="login-form" style="display:none;">
+          <h2>Вход</h2>
+          <input type="tel" id="login-phone" placeholder="Телефон" required autocomplete="tel">
+          <input type="password" id="login-password" placeholder="Пароль" required autocomplete="current-password">
+          <button type="submit" class="auth-btn">Войти</button>
+          <div class="auth-switch">Нет аккаунта? <span id="to-register">Зарегистрироваться</span></div>
+        </form>
+      </div>
+      <div class="profile-block" style="display:none;">
+        <div class="profile-greeting-bg">
+          <div class="profile-greeting-text">
+            <div class="profile-greeting" id="profile-greeting">Добро пожаловать!</div>
+          </div>
+        </div>
+        <div class="profile-cards">
+          <div class="profile-card profile-orders">
+            <div class="profile-card-icon"><span>🚕</span></div>
+            <div class="profile-card-info">
+              <div class="profile-card-title">Мои поездки</div>
+              <div class="profile-card-value" id="profile-orders">0</div>
+            </div>
+          </div>
+          <div class="profile-card profile-promo profile-card-disabled">
+            <div class="profile-card-icon"><span>🎁</span></div>
+            <div class="profile-card-info">
+              <div class="profile-card-title">Промокод</div>
+              <div class="profile-card-value">В разработке</div>
+            </div>
+          </div>
+          <a class="profile-card profile-support" href="https://t.me/Morygrey" target="_blank" rel="noopener">
+            <div class="profile-card-icon"><span>💬</span></div>
+            <div class="profile-card-info">
+              <div class="profile-card-title">Поддержка</div>
+              <div class="profile-card-value">Написать в Telegram</div>
+            </div>
+          </a>
+        </div>
+        <nav class="bottom-bar">
+          <button class="bar-btn active"><span class="bar-icon">👤</span><span class="bar-label">Профиль</span></button>
+          <button class="bar-btn"><span class="bar-icon">🚖</span><span class="bar-label">Заказать</span></button>
+          <button class="bar-btn"><span class="bar-icon">📜</span><span class="bar-label">История</span></button>
+        </nav>
+      </div>
+    </main>
+  </div>
+  <script src="script.js"></script>
+  <script>
+    // Firebase config
+    const firebaseConfig = {
+      apiKey: "AIzaSyCldOf0XUsm46eMvwXSLD6nNy64HlXf3cU",
+      authDomain: "prestige-d3b06.firebaseapp.com",
+      projectId: "prestige-d3b06",
+      storageBucket: "prestige-d3b06.firebasestorage.app",
+      messagingSenderId: "606988226062",
+      appId: "1:606988226062:web:d6e9441e3072c40129b65f",
+      measurementId: "G-CX1LJCVTQS"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+</body>
+</html> 
