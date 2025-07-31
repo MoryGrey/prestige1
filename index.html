@@ -1,0 +1,663 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ТАКСИ ПРЕСТИЖ</title>
+  <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🚕</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+  <div class="onboarding-container">
+    <header>
+      <h1 class="brand-title">ТАКСИ ПРЕСТИЖ</h1>
+    </header>
+    <main>
+      <div class="slides">
+        <div class="slide active">
+          <h2>Быстро и удобно</h2>
+          <p>Закажите такси в пару кликов — без звонков и ожидания оператора.</p>
+        </div>
+        <div class="slide">
+          <h2>Премиальный сервис</h2>
+          <p>Вежливые водители, чистые автомобили, индивидуальный подход к каждому клиенту.</p>
+        </div>
+        <div class="slide">
+          <h2>Выгодные тарифы</h2>
+          <p>Честные цены, прозрачные условия, никаких скрытых платежей.</p>
+        </div>
+      </div>
+      <div class="slide-indicators">
+        <span class="indicator active"></span>
+        <span class="indicator"></span>
+        <span class="indicator"></span>
+      </div>
+      <div class="logo-block">
+        <div class="logo-container">
+          <img src="logo.png" alt="Логотип Престиж" class="logo">
+          <button class="next-btn">Далее</button>
+        </div>
+      </div>
+      <div class="auth-form-block" style="display:none;">
+        <form class="auth-form" id="register-form">
+          <h2>Регистрация</h2>
+          <input type="text" id="reg-name" placeholder="Имя" required autocomplete="name">
+          <input type="tel" id="reg-phone" placeholder="Телефон" required autocomplete="tel">
+          <input type="password" id="reg-password" placeholder="Пароль" required autocomplete="new-password">
+          <button type="submit" class="auth-btn">Зарегистрироваться</button>
+          <div class="auth-switch">Уже есть аккаунт? <span id="to-login">Войти</span></div>
+        </form>
+        <form class="auth-form" id="login-form" style="display:none;">
+          <h2>Вход</h2>
+          <input type="tel" id="login-phone" placeholder="Телефон" required autocomplete="tel">
+          <input type="password" id="login-password" placeholder="Пароль" required autocomplete="current-password">
+          <button type="submit" class="auth-btn">Войти</button>
+          <div class="auth-switch">Нет аккаунта? <span id="to-register">Зарегистрироваться</span></div>
+        </form>
+      </div>
+      <div class="profile-block" style="display:none;">
+        <section class="profile-hero-black">
+          <div class="profile-hero-content-black">
+            <div class="profile-hero-greeting-black" id="profile-greeting">Добро пожаловать!</div>
+            <div class="profile-hero-subtitle-black" id="profile-subtitle">Мы рады что пользуетесь такси ПРЕСТИЖ</div>
+          </div>
+        </section>
+        <section class="profile-cards-row-black">
+          <div class="profile-card-row-black profile-orders">
+            <div class="profile-card-row-black-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M7 19v-2.5A2.5 2.5 0 0 1 9.5 14h9a2.5 2.5 0 0 1 2.5 2.5V19" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9.5" cy="11" r="2.5" stroke="#181818" stroke-width="2"/><circle cx="18.5" cy="11" r="2.5" stroke="#181818" stroke-width="2"/></svg></div>
+            <div class="profile-card-row-black-value" id="profile-orders">0</div>
+            <div class="profile-card-row-black-label">Поездки</div>
+          </div>
+          <div class="profile-card-row-black profile-promo" onclick="showPromoModal()">
+            <div class="profile-card-row-black-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M9 14l2 2 4-4" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><rect x="6" y="6" width="16" height="16" rx="8" stroke="#181818" stroke-width="2"/></svg></div>
+            <div class="profile-card-row-black-value">—</div>
+            <div class="profile-card-row-black-label">Промокод</div>
+          </div>
+          <a class="profile-card-row-black profile-support" href="https://t.me/Morygrey" target="_blank" rel="noopener">
+            <div class="profile-card-row-black-icon"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M8 14l4 4 8-8" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+            <div class="profile-card-row-black-value">—</div>
+            <div class="profile-card-row-black-label">Поддержка</div>
+          </a>
+        </section>
+        <div class="profile-soon-banner" onclick="logout()">
+          <span>Выйти из аккаунта</span>
+        </div>
+        <nav class="bottom-bar-clean">
+          <button class="bar-btn-clean active" onclick="showProfilePage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M14 15c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.07 0-9.2 1.54-9.2 4.8V26h18.4v-4.2C23.2 18.54 17.07 17 14 17z" fill="#181818"/></svg></span><span class="bar-label-clean">Профиль</span></button>
+          <button class="bar-btn-clean" onclick="showOrderPage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M6 20v-3a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="11" r="3" stroke="#181818" stroke-width="2"/><circle cx="19" cy="11" r="3" stroke="#181818" stroke-width="2"/></svg></span><span class="bar-label-clean">Заказать</span></button>
+          <button class="bar-btn-clean" onclick="showHistoryPage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M9 9h10M9 14h10M9 19h10" stroke="#181818" stroke-width="2" stroke-linecap="round"/></svg></span><span class="bar-label-clean">История</span></button>
+        </nav>
+      </div>
+
+      <!-- Страница заказа такси -->
+      <div class="order-block" style="display:none;">
+        <section class="order-hero">
+          <div class="order-hero-content">
+            <h1 class="order-title">Заказать такси</h1>
+            <div class="order-subtitle">Быстро, комфортно, безопасно</div>
+          </div>
+        </section>
+
+        <section class="order-form">
+          <div class="order-input-group" id="order-input-group">
+            <div class="order-input-wrapper">
+              <div class="order-input-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="12" fill="#FFD600"/>
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#181818"/>
+                </svg>
+              </div>
+              <input type="text" id="from-address" class="order-input" placeholder="Откуда забрать?" maxlength="50">
+            </div>
+            <div class="order-input-wrapper">
+              <div class="order-input-icon">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                  <circle cx="12" cy="12" r="12" fill="#FFD600"/>
+                  <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z" fill="#181818"/>
+                </svg>
+              </div>
+              <input type="text" id="to-address" class="order-input" placeholder="Куда едем?" maxlength="50">
+            </div>
+            <div class="order-add-point-btn" onclick="addViaPoint()">
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M10 0v20M0 10h20" stroke="#FFD600" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+              <span>Добавить точку (+100₽)</span>
+            </div>
+          </div>
+
+          <div id="time-info"></div>
+          <div class="order-price-card">
+            <div class="order-price-info">
+              <span class="order-price-label">Стоимость поездки:</span>
+              <span class="order-price-value" id="order-price">150 ₽</span>
+            </div>
+            <div class="order-price-note">По городу</div>
+            <div id="promo-info" style="display: none; margin-top: 10px; text-align: center;">
+              <div style="color: #4CAF50; font-size: 0.9rem; margin-bottom: 5px;">
+                Промокод применен! Скидка: <span id="promo-discount">0</span>₽
+              </div>
+              <button onclick="removePromoCode()" style="background: none; border: 1px solid #F44336; color: #F44336; padding: 5px 10px; border-radius: 5px; font-size: 0.8rem; cursor: pointer;">
+                Отменить промокод
+              </button>
+            </div>
+          </div>
+
+          <button class="order-options-btn" onclick="toggleOrderOptions()">
+            <span>Дополнительно</span>
+            <svg class="order-options-arrow" width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M6 8l4 4 4-4" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+
+          <div class="order-options-panel" id="order-options-panel">
+            <div class="order-option-item">
+              <div class="order-option-info">
+                <div class="order-option-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="12" fill="#FFD600"/>
+                    <path d="M12 2v20M2 12h20" stroke="#181818" stroke-width="2" stroke-linecap="round"/>
+                  </svg>
+                </div>
+                <div class="order-option-text">
+                  <div class="order-option-title">Детское кресло</div>
+                  <div class="order-option-subtitle">+50 ₽ к стоимости</div>
+                </div>
+              </div>
+              <label class="order-option-switch">
+                <input type="checkbox" id="child-seat" onchange="updateOrderPrice()">
+                <span class="order-option-slider"></span>
+              </label>
+            </div>
+
+
+
+            <div class="order-option-item">
+              <div class="order-option-info">
+                <div class="order-option-icon">
+                  <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                    <circle cx="12" cy="12" r="12" fill="#FFD600"/>
+                    <path d="M12 2v10l4 4" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="order-option-text">
+                  <div class="order-option-title">Предварительный заказ</div>
+                  <div class="order-option-subtitle">Заказать на время</div>
+                </div>
+              </div>
+              <label class="order-option-switch">
+                <input type="checkbox" id="pre-order" onchange="toggleTimePicker()">
+                <span class="order-option-slider"></span>
+              </label>
+            </div>
+
+            <div class="order-time-picker" id="order-time-picker" style="display:none;">
+              <input type="datetime-local" id="order-time" class="order-time-input">
+            </div>
+          </div>
+
+          <button class="order-continue-btn" onclick="processOrder()">
+            <span>Заказать такси</span>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+              <path d="M4 10h12M10 4l6 6-6 6" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+          </button>
+        </section>
+
+        <nav class="bottom-bar-clean">
+          <button class="bar-btn-clean" onclick="showProfilePage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M14 15c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.07 0-9.2 1.54-9.2 4.8V26h18.4v-4.2C23.2 18.54 17.07 17 14 17z" fill="#181818"/></svg></span><span class="bar-label-clean">Профиль</span></button>
+          <button class="bar-btn-clean active" onclick="showOrderPage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M6 20v-3a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="11" r="3" stroke="#181818" stroke-width="2"/><circle cx="19" cy="11" r="3" stroke="#181818" stroke-width="2"/></svg></span><span class="bar-label-clean">Заказать</span></button>
+          <button class="bar-btn-clean" onclick="showHistoryPage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M9 9h10M9 14h10M9 19h10" stroke="#181818" stroke-width="2" stroke-linecap="round"/></svg></span><span class="bar-label-clean">История</span></button>
+        </nav>
+      </div>
+      <!-- Страница истории заказов -->
+      <div class="history-block" style="display:none;">
+        <section class="history-hero">
+          <div class="history-hero-content">
+            <h1 class="history-title">История заказов</h1>
+            <div class="history-subtitle">Все ваши поездки в одном месте</div>
+          </div>
+        </section>
+        <section class="history-list">
+          <div class="history-empty" id="history-empty">
+            <div class="history-empty-icon">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="32" fill="#FFD600"/>
+                <path d="M16 32h32M32 16v32" stroke="#181818" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="history-empty-title">История пуста</div>
+            <div class="history-empty-subtitle">Сделайте первый заказ, чтобы увидеть его здесь</div>
+          </div>
+          <div class="history-items" id="history-items">
+            <!-- Заказы будут добавляться динамически -->
+          </div>
+        </section>
+        <nav class="bottom-bar-clean">
+          <button class="bar-btn-clean" onclick="showProfilePage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M14 15c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm0 2c-3.07 0-9.2 1.54-9.2 4.8V26h18.4v-4.2C23.2 18.54 17.07 17 14 17z" fill="#181818"/></svg></span><span class="bar-label-clean">Профиль</span></button>
+          <button class="bar-btn-clean" onclick="showOrderPage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M6 20v-3a3 3 0 0 1 3-3h10a3 3 0 0 1 3 3v3" stroke="#181818" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="11" r="3" stroke="#181818" stroke-width="2"/><circle cx="19" cy="11" r="3" stroke="#181818" stroke-width="2"/></svg></span><span class="bar-label-clean">Заказать</span></button>
+          <button class="bar-btn-clean active" onclick="showHistoryPage()"><span class="bar-icon-clean"><svg width="28" height="28" viewBox="0 0 28 28" fill="none"><circle cx="14" cy="14" r="14" fill="#FFD600"/><path d="M9 9h10M9 14h10M9 19h10" stroke="#181818" stroke-width="2" stroke-linecap="round"/></svg></span><span class="bar-label-clean">История</span></button>
+        </nav>
+      </div>
+
+      <!-- Админ страница -->
+      <div class="admin-block" style="display:none;">
+        <section class="admin-hero">
+          <div class="admin-hero-content">
+            <h1 class="admin-title" id="admin-greeting">Добро пожаловать, Николь!</h1>
+            <div class="admin-subtitle">ТЫ САМАЯ ЛУЧШАЯ ❤️</div>
+          </div>
+        </section>
+
+        <section class="admin-actions">
+          <button class="admin-action-btn" onclick="showFreeOrderForm()">
+            <div class="admin-action-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#FF69B4"/>
+                <path d="M12 2v20M2 12h20" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="admin-action-text">
+              <div class="admin-action-title">🎁 Бесплатный заказ</div>
+              <div class="admin-action-subtitle">Создать бесплатный заказ</div>
+            </div>
+          </button>
+          
+          <button class="admin-action-btn" onclick="showOrdersManagement()">
+            <div class="admin-action-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#FF69B4"/>
+                <path d="M9 9h10M9 14h10M9 19h10" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="admin-action-text">
+              <div class="admin-action-title">📋 Управление заказами</div>
+              <div class="admin-action-subtitle">Просмотр и управление всеми заказами</div>
+            </div>
+          </button>
+          
+          <button class="admin-action-btn" onclick="testPushNotification()">
+            <div class="admin-action-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#FF69B4"/>
+                <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="admin-action-text">
+              <div class="admin-action-title">🧪 Тест уведомлений</div>
+              <div class="admin-action-subtitle">Проверить работу push-уведомлений</div>
+            </div>
+          </button>
+          
+          <button class="admin-action-btn" onclick="testTelegramNotification()">
+            <div class="admin-action-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#FF69B4"/>
+                <path d="M8 12l2 2 6-6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </div>
+            <div class="admin-action-text">
+              <div class="admin-action-title">📱 Тест Telegram</div>
+              <div class="admin-action-subtitle">Проверить отправку в Telegram</div>
+            </div>
+          </button>
+
+          <button class="admin-action-btn" onclick="showPromoStats()">
+            <div class="admin-action-icon">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <circle cx="12" cy="12" r="12" fill="#FFD600"/>
+                <path d="M12 2v20M2 12h20" stroke="#181818" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="admin-action-text">
+              <div class="admin-action-title">📊 Статистика промокода</div>
+              <div class="admin-action-subtitle">Просмотр использования ПРЕСТИЖ</div>
+            </div>
+          </button>
+        </section>
+
+        <div class="admin-back-btn" onclick="exitAdminPanel()">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+            <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+          <span>Выйти из админки</span>
+        </div>
+
+      </div>
+
+                  <!-- Страница управления заказами -->
+            <div class="orders-management-block" style="display:none;">
+              <section class="orders-management-hero">
+                <div class="orders-management-hero-content">
+                  <h1 class="orders-management-title">📋 Управление заказами</h1>
+                  <div class="orders-management-subtitle">Просмотр и управление всеми заказами</div>
+                  <div class="orders-management-back-btn" onclick="backToAdminPanel()">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                      <path d="M19 12H5M12 19l-7-7 7-7" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>Назад в админку</span>
+                  </div>
+                </div>
+              </section>
+
+        <section class="orders-management-filters">
+          <div class="orders-filter-tabs">
+            <button class="orders-filter-tab active" data-status="all" onclick="filterOrders('all')">
+              <span>Все заказы</span>
+            </button>
+            <button class="orders-filter-tab" data-status="waiting" onclick="filterOrders('waiting')">
+              <span>Ожидание водителей</span>
+            </button>
+            <button class="orders-filter-tab" data-status="driving" onclick="filterOrders('driving')">
+              <span>Поехала</span>
+            </button>
+            <button class="orders-filter-tab" data-status="completed" onclick="filterOrders('completed')">
+              <span>Выполненные</span>
+            </button>
+          </div>
+        </section>
+
+        <section class="orders-management-list">
+          <div class="orders-empty" id="orders-empty">
+            <div class="orders-empty-icon">
+              <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+                <circle cx="32" cy="32" r="32" fill="#FFD600"/>
+                <path d="M16 32h32M32 16v32" stroke="#181818" stroke-width="3" stroke-linecap="round"/>
+              </svg>
+            </div>
+            <div class="orders-empty-title">Заказы не найдены</div>
+            <div class="orders-empty-subtitle">Попробуйте изменить фильтр или создать новый заказ</div>
+          </div>
+          <div class="orders-items" id="orders-items">
+            <!-- Заказы будут добавляться динамически -->
+          </div>
+        </section>
+
+                    </div>
+
+      <!-- Модальное окно статистики -->
+      <div id="admin-stats-modal" class="admin-modal" style="display:none;">
+        <div class="admin-modal-overlay" onclick="closeAdminModal()"></div>
+        <div class="admin-modal-content">
+          <div class="admin-modal-header">
+            <h2 class="admin-modal-title">📊 Подробная статистика</h2>
+            <button class="admin-modal-close" onclick="closeAdminModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="admin-modal-body" id="admin-stats-content">
+            <!-- Статистика будет загружена динамически -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно бесплатного заказа -->
+      <div id="admin-free-order-modal" class="admin-modal" style="display:none;">
+        <div class="admin-modal-overlay" onclick="closeAdminModal()"></div>
+        <div class="admin-modal-content">
+          <div class="admin-modal-header">
+            <h2 class="admin-modal-title">🎁 Создать бесплатный заказ</h2>
+            <button class="admin-modal-close" onclick="closeAdminModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="admin-modal-body">
+            <div class="admin-form-group">
+              <label class="admin-form-label">Откуда:</label>
+              <input type="text" id="free-order-from" class="admin-form-input" placeholder="Адрес отправления">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Куда:</label>
+              <input type="text" id="free-order-to" class="admin-form-input" placeholder="Адрес назначения">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Телефон клиента:</label>
+              <input type="tel" id="free-order-phone" class="admin-form-input" placeholder="+7 (999) 123-45-67">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Комментарий:</label>
+              <textarea id="free-order-comment" class="admin-form-input" placeholder="Дополнительная информация" rows="3"></textarea>
+            </div>
+            <button class="admin-form-btn" onclick="createFreeOrder()">
+              <span>Создать бесплатный заказ</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно управления очередью -->
+      <div id="admin-queue-modal" class="admin-modal" style="display:none;">
+        <div class="admin-modal-overlay" onclick="closeAdminModal()"></div>
+        <div class="admin-modal-content">
+          <div class="admin-modal-header">
+            <h2 class="admin-modal-title">👥 Управление очередью</h2>
+            <button class="admin-modal-close" onclick="closeAdminModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="admin-modal-body" id="admin-queue-content">
+            <!-- Очередь будет загружена динамически -->
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно назначения водителя -->
+      <div id="assign-driver-modal" class="admin-modal" style="display:none;">
+        <div class="admin-modal-overlay" onclick="closeAssignDriverModal()"></div>
+        <div class="admin-modal-content">
+          <div class="admin-modal-header">
+            <h2 class="admin-modal-title">🚗 Назначить водителя</h2>
+            <button class="admin-modal-close" onclick="closeAssignDriverModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="admin-modal-body">
+            <div class="admin-form-group">
+              <label class="admin-form-label">Марка автомобиля:</label>
+              <input type="text" id="driver-car" class="admin-form-input" placeholder="Например: Toyota Camry">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Гос. номер:</label>
+              <input type="text" id="driver-number" class="admin-form-input" placeholder="Например: А123БВ77">
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Имя водителя:</label>
+              <input type="text" id="driver-name" class="admin-form-input" placeholder="Имя водителя">
+            </div>
+            <button class="admin-form-btn" onclick="assignDriverToOrder()">
+              <span>Назначить водителя</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно завершения заказа -->
+      <div id="complete-order-modal" class="admin-modal" style="display:none;">
+        <div class="admin-modal-overlay" onclick="closeCompleteOrderModal()"></div>
+        <div class="admin-modal-content">
+          <div class="admin-modal-header">
+            <h2 class="admin-modal-title">✅ Завершить заказ</h2>
+            <button class="admin-modal-close" onclick="closeCompleteOrderModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="admin-modal-body">
+            <div class="complete-order-info" id="complete-order-info">
+              <!-- Информация о заказе будет загружена динамически -->
+            </div>
+            <div class="admin-form-group">
+              <label class="admin-form-label">Комментарий (необязательно):</label>
+              <textarea id="complete-order-comment" class="admin-form-input" placeholder="Дополнительная информация о завершении заказа" rows="3"></textarea>
+            </div>
+            <button class="admin-form-btn" onclick="completeOrder()">
+              <span>Завершить заказ</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно промокода -->
+      <div id="promo-modal" class="promo-modal" style="display:none;">
+        <div class="promo-modal-overlay" onclick="closePromoModal()"></div>
+        <div class="promo-modal-content">
+          <div class="promo-modal-header">
+            <h2 class="promo-modal-title">🎁 Введите промокод</h2>
+            <button class="promo-modal-close" onclick="closePromoModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="promo-modal-body">
+            <div class="promo-form-group">
+              <label class="promo-form-label">Промокод:</label>
+              <input type="text" id="promo-code" class="promo-form-input" placeholder="Введите промокод" maxlength="10">
+            </div>
+            <button class="promo-form-btn" onclick="processPromoCode()">
+              <span>Активировать</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Модальное окно входа в админку -->
+      <div id="admin-login-modal" class="admin-login-modal" style="display:none;">
+        <div class="admin-login-overlay" onclick="closeAdminLoginModal()"></div>
+        <div class="admin-login-content">
+          <div class="admin-login-header">
+            <h2 class="admin-login-title">🔐 Вход в админ панель</h2>
+            <button class="admin-login-close" onclick="closeAdminLoginModal()">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+                <path d="M18 6L6 18M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+              </svg>
+            </button>
+          </div>
+          <div class="admin-login-body">
+            <div class="admin-login-form-group">
+              <label class="admin-login-form-label">Логин:</label>
+              <input type="text" id="admin-login-username" class="admin-login-form-input" placeholder="Введите логин">
+            </div>
+            <div class="admin-login-form-group">
+              <label class="admin-login-form-label">Пароль:</label>
+              <input type="password" id="admin-login-password" class="admin-login-form-input" placeholder="Введите пароль">
+            </div>
+            <button class="admin-login-form-btn" onclick="processAdminLogin()">
+              <span>Войти</span>
+              <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+                <path d="M4 10h12M10 4l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- Плашка уведомления о прибытии водителя -->
+  <div id="driver-arrival-notification" class="driver-arrival-notification" style="display:none;">
+    <div class="driver-arrival-content">
+      <div class="driver-arrival-icon">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <circle cx="24" cy="24" r="24" fill="#4CAF50"/>
+          <path d="M12 32v-4a4 4 0 0 1 4-4h16a4 4 0 0 1 4 4v4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <circle cx="16" cy="28" r="2" stroke="#fff" stroke-width="2"/>
+          <circle cx="32" cy="28" r="2" stroke="#fff" stroke-width="2"/>
+          <path d="M8 20l4-4h24l4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="driver-arrival-info">
+        <div class="driver-arrival-title">Выходите!</div>
+        <div class="driver-arrival-car" id="driver-car-info">Марка • Гос номер</div>
+      </div>
+      <button class="driver-arrival-btn" onclick="closeDriverArrival()">
+        <span>Выхожу</span>
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M4 10h12M10 4l6 6-6 6" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Модальное окно подтверждения отмены заказа -->
+  <div id="cancel-order-modal" class="cancel-order-modal" style="display:none;">
+    <div class="cancel-order-overlay" onclick="closeCancelModal()"></div>
+    <div class="cancel-order-content">
+      <div class="cancel-order-icon">
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none">
+          <circle cx="32" cy="32" r="32" fill="#F44336"/>
+          <path d="M20 20l24 24M44 20L20 44" stroke="#fff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </div>
+      <div class="cancel-order-title">Отменить заказ?</div>
+      <div class="cancel-order-subtitle">Это действие нельзя отменить. Заказ будет удален из истории.</div>
+      <div class="cancel-order-route" id="cancel-order-route">
+        <span class="from">Откуда</span>
+        <span class="arrow">→</span>
+        <span class="to">Куда</span>
+      </div>
+      <div class="cancel-order-price" id="cancel-order-price">0 ₽</div>
+      <div class="cancel-order-actions">
+        <button class="cancel-order-btn-back" onclick="closeCancelModal()">
+          <span>Назад</span>
+        </button>
+        <button class="cancel-order-btn-confirm" onclick="confirmCancelOrder()">
+          <span>Отменить заказ</span>
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+            <path d="M4 4l12 12M16 4L4 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Контейнер для уведомлений -->
+  <div id="notifications-container" class="notifications-container"></div>
+
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-messaging-compat.js"></script>
+
+  <!-- Инициализация Firebase -->
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCldOf0XUsm46eMvwXSLD6nNy64HlXf3cU",
+      authDomain: "prestige-d3b06.firebaseapp.com",
+      projectId: "prestige-d3b06",
+      storageBucket: "prestige-d3b06.firebasestorage.app",
+      messagingSenderId: "606988226062",
+      appId: "1:606988226062:web:d6e9441e3072c40129b65f",
+      measurementId: "G-CX1LJCVTQS"
+    };
+    firebase.initializeApp(firebaseConfig);
+  </script>
+
+  <!-- Основной скрипт -->
+  <script src="script.js"></script>
+</body>
+</html> 
